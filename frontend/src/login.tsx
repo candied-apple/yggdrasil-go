@@ -133,7 +133,7 @@ function Login(props: { appData: AppState, setAppData: React.Dispatch<React.SetS
         <Container maxWidth={'sm'}>
             <Paper className={'login-card'}>
                 <section className="header">
-                    <h1>简陋注册页</h1>
+                    <h1>Kayıt Ol / Giriş Yap</h1>
                 </section>
                 <Box component="form" autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
                     <div className='username'>
@@ -141,7 +141,7 @@ function Login(props: { appData: AppState, setAppData: React.Dispatch<React.SetS
                             id="username-input"
                             name='username'
                             fullWidth
-                            label="邮箱"
+                            label="E-Posta"
                             variant="filled"
                             required
                             error={errors.username && true}
@@ -153,7 +153,7 @@ function Login(props: { appData: AppState, setAppData: React.Dispatch<React.SetS
                     </div>
                     <Collapse in={!appData.login} className='profileName'>
                         <FormControl fullWidth variant="filled" required={!appData.login} error={errors.profileName && true}>
-                            <InputLabel htmlFor="profileName-input">角色名</InputLabel>
+                            <InputLabel htmlFor="profileName-input">Minecraft kullanıcı adı</InputLabel>
                             <FilledInput
                                 id="profileName-input"
                                 name="profileName"
@@ -163,12 +163,12 @@ function Login(props: { appData: AppState, setAppData: React.Dispatch<React.SetS
                                     ...register('profileName', {required: true, minLength: 2, pattern: /^[a-zA-Z0-9_]{1,16}$/, maxLength: 16})
                                 }}
                             />
-                            <FocusedShowHelperText id="profileName-input-helper-text">字母，数字或下划线</FocusedShowHelperText>
+                            <FocusedShowHelperText id="profileName-input-helper-text">harf, sayı veya alt çizgi</FocusedShowHelperText>
                         </FormControl>
                     </Collapse>
                     <div className='password'>
                         <FormControl fullWidth variant="filled" required error={errors.password && true}>
-                            <InputLabel htmlFor="password-input">密码</InputLabel>
+                            <InputLabel htmlFor="password-input">Şifre</InputLabel>
                             <FilledInput
                                 id="password-input"
                                 name="password"
@@ -177,7 +177,7 @@ function Login(props: { appData: AppState, setAppData: React.Dispatch<React.SetS
                                 endAdornment={
                                     <InputAdornment position="end">
                                         <IconButton
-                                            aria-label="显示密码"
+                                            aria-label="şifreyi göster"
                                             onClick={handleClickShowPassword}
                                             onMouseDown={handleMouseDownPassword}
                                             edge="end">
@@ -190,12 +190,12 @@ function Login(props: { appData: AppState, setAppData: React.Dispatch<React.SetS
                                     ...register('password', {required: true, minLength: 6})
                                 }}
                             />
-                            <FocusedShowHelperText id="password-input-helper-text">警告: 暂无重置密码接口，请妥善保管密码</FocusedShowHelperText>
+                            <FocusedShowHelperText id="password-input-helper-text">Uyarı: Şifre Sıfırlama Yoktor Şifrenizi İyi Saklayınız</FocusedShowHelperText>
                         </FormControl>
                     </div>
                     <div className='button-container'>
-                        <Button variant='contained' onClick={() => setLogin(!appData.login)} disabled={submitting}>{appData.login ? '注册' : '已有帐号登录'}</Button>
-                        <Button variant='contained' type='submit' disabled={submitting}>{appData.login ? '登录' : '注册'}</Button>
+                        <Button variant='contained' onClick={() => setLogin(!appData.login)} disabled={submitting}>{appData.login ? 'Kayıt Ol' : 'Zaten Bir Hesabın Varmı ?'}</Button>
+                        <Button variant='contained' type='submit' disabled={submitting}>{appData.login ? 'Giriş Yap' : 'Kayıt Ol'}</Button>
                     </div>
                 </Box>
             </Paper>

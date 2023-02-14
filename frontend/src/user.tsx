@@ -232,23 +232,23 @@ function UploadTextureForm(props: {
                             value={type}
                             onChange={handleTypeChange}
                             name="type">
-                            <FormControlLabel value="skin" control={<Radio/>} label="皮肤"/>
-                            <FormControlLabel value="cape" control={<Radio/>} label="披风"/>
+                            <FormControlLabel value="skin" control={<Radio/>} label="Skin"/>
+                            <FormControlLabel value="cape" control={<Radio/>} label="Pelerin"/>
                         </RadioGroup>
                     </FormControl>
                 </Box>
                 <Fade in={type == 'skin'}>
                     <Box component="div" width="50%" boxSizing="border-box" display="inline-block">
                         <FormControl>
-                            <FormLabel id="texture-model-group-label">材质模型: </FormLabel>
+                            <FormLabel id="texture-model-group-label">Materyal Modeli: </FormLabel>
                             <RadioGroup
                                 row
                                 aria-labelledby="texture-model-group-label"
                                 value={model}
                                 onChange={handleModelChange}
                                 name="model">
-                                <FormControlLabel value="default" control={<Radio/>} label="Steve"/>
-                                <FormControlLabel value="slim" control={<Radio/>} label="Alex"/>
+                                <FormControlLabel value="default" control={<Radio/>} label="Kalın"/>
+                                <FormControlLabel value="slim" control={<Radio/>} label="Ince"/>
                             </RadioGroup>
                         </FormControl>
                     </Box>
@@ -258,7 +258,7 @@ function UploadTextureForm(props: {
                         id="url-input"
                         name="url"
                         fullWidth
-                        label="材质 URL"
+                        label="Materyal URL"
                         variant="filled"
                         required={!filePath}
                         type="url"
@@ -268,14 +268,14 @@ function UploadTextureForm(props: {
                 </Collapse>
                 <Collapse in={!url} className="file">
                     <FormControl fullWidth variant="filled" required={!url}>
-                        <InputLabel htmlFor="file-input">或者选择一个图片</InputLabel>
+                        <InputLabel htmlFor="file-input">yada bir png seçin</InputLabel>
                         <FilledInput
                             id="file-input"
                             required={!url}
                             endAdornment={
                                 <InputAdornment position="end">
                                     <IconButton
-                                        aria-label="清空选择"
+                                        aria-label="Seçimi temizle"
                                         edge="end"
                                         onMouseDown={handleMouseDown}
                                         onClick={() => setFilePath('')}>
@@ -292,8 +292,8 @@ function UploadTextureForm(props: {
                     </FormControl>
                 </Collapse>
                 <div className="button-container">
-                    <Button variant="contained" type="submit" disabled={submitting}>上传</Button>
-                    <Button variant="contained" onClick={deleteTexture} disabled={submitting}>删除材质</Button>
+                    <Button variant="contained" type="submit" disabled={submitting}>Yükle</Button>
+                    <Button variant="contained" onClick={deleteTexture} disabled={submitting}>Materyali Sil</Button>
                 </div>
             </Box>
         </>
@@ -349,13 +349,13 @@ function ChangeProfileForm(props: { appData: AppState, setAppData: React.Dispatc
     return (
         <>
             <section className="header">
-                <h3>更改角色名</h3>
+                <h3>Minecraft Kullanıcı Adını Değiştir</h3>
             </section>
 
             <Box component="form" autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
                 <div className="changeTo">
                     <FormControl fullWidth variant="filled" required error={errors.changeTo != null}>
-                        <InputLabel htmlFor="changeTo-input">角色名</InputLabel>
+                        <InputLabel htmlFor="changeTo-input">Kullanıcı Adı</InputLabel>
                         <FilledInput
                             id="changeTo-input"
                             name="changeTo"
@@ -366,11 +366,11 @@ function ChangeProfileForm(props: { appData: AppState, setAppData: React.Dispatc
                                 ...register('changeTo', {required: true, minLength: 2, pattern: /^[a-zA-Z0-9_]{1,16}$/, maxLength: 16})
                             }}
                         />
-                        <FocusedShowHelperText id="profileName-input-helper-text">字母，数字或下划线</FocusedShowHelperText>
+                        <FocusedShowHelperText id="profileName-input-helper-text">harf, sayı veya alt çizgi</FocusedShowHelperText>
                     </FormControl>
                 </div>
                 <div className="button-container">
-                    <Button variant="contained" type="submit" disabled={submitting}>更改</Button>
+                    <Button variant="contained" type="submit" disabled={submitting}>Değiştir</Button>
                 </div>
             </Box>
         </>
@@ -449,7 +449,7 @@ function User(props: { appData: AppState, setAppData: React.Dispatch<React.SetSt
         <Container maxWidth={'sm'}>
             <Paper className={'user-card'}>
                 <section className="header">
-                    <h1>简陋信息页</h1>
+                    <h1>Profil</h1>
                 </section>
 
                 <UploadTextureForm appData={appData} setAppData={setAppData} skinData={skinData} setSkinData={setSkinData}/>
