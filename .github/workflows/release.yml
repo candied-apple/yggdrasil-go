@@ -89,4 +89,4 @@ jobs:
           context: .
           push: true
           platforms: linux/amd64,linux/arm64
-          tags: gardel/yggdrasil-go:latest, gardel/yggdrasil-go:${{ github.ref_name }}
+          tags: candied-apple/yggdrasil-go:latest, candied-apple/yggdrasil-go:${{ github.ref_name }}
