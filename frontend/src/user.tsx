@@ -128,13 +128,13 @@ function UploadTextureForm(props: {
                     'Authorization': 'Bearer ' + appData.accessToken
                 }
             }).then(() => {
-                enqueueSnackbar('上传成功', {variant: 'success'});
+                enqueueSnackbar('Başarıyla yüklendi', {variant: 'success'});
             }).catch(e => {
                 const response = e.response;
                 if (response && response.data) {
                     enqueueSnackbar(response.data.errorMessage, {variant: 'error'});
                 } else {
-                    enqueueSnackbar('网络错误:' + e.message, {variant: 'error'});
+                    enqueueSnackbar('Ağ hatası:' + e.message, {variant: 'error'});
                 }
             }).finally(() => setSubmitting(false));
         } else if (url) {
@@ -143,7 +143,7 @@ function UploadTextureForm(props: {
                     'Authorization': 'Bearer ' + appData.accessToken
                 }
             }).then(() => {
-                enqueueSnackbar('上传成功', {variant: 'success'});
+                enqueueSnackbar('Başarıyla yüklendi', {variant: 'success'});
                 axios.get('/sessionserver/session/minecraft/profile/' + appData.uuid).then(response => {
                     let texturesProp = response.data.properties.find((v: any) => v.name == 'textures');
                     let profile: any = {};
@@ -173,11 +173,11 @@ function UploadTextureForm(props: {
                 if (response && response.data) {
                     enqueueSnackbar(response.data.errorMessage, {variant: 'error'});
                 } else {
-                    enqueueSnackbar('网络错误:' + e.message, {variant: 'error'});
+                    enqueueSnackbar('Ağ hatası:' + e.message, {variant: 'error'});
                 }
             }).finally(() => setSubmitting(false));
         } else {
-            enqueueSnackbar('未选择文件', {variant: 'warning'});
+            enqueueSnackbar('Unproof file', {variant: 'warning'});
             setSubmitting(false);
         }
     };
@@ -189,7 +189,7 @@ function UploadTextureForm(props: {
                 'Authorization': 'Bearer ' + appData.accessToken
             }
         }).then(() => {
-            enqueueSnackbar('删除成功', {variant: 'success'});
+            enqueueSnackbar('Başarıyla silindi', {variant: 'success'});
             if (skinData != null) {
                 if (type == 'cape') {
                     setSkinData({
@@ -210,7 +210,7 @@ function UploadTextureForm(props: {
             if (response && response.data) {
                 enqueueSnackbar(response.data.errorMessage, {variant: 'error'});
             } else {
-                enqueueSnackbar('网络错误:' + e.message, {variant: 'error'});
+                enqueueSnackbar('Ağ hatası:' + e.message, {variant: 'error'});
             }
         }).finally(() => setSubmitting(false));
     };
@@ -219,13 +219,13 @@ function UploadTextureForm(props: {
     return (
         <>
             <section className="header">
-                <h3>上传材质</h3>
+                <h3>Materyal yükle</h3>
             </section>
 
             <Box component="form" autoComplete="off" onSubmit={uploadTexture}>
                 <Box component="div" width="50%" boxSizing="border-box" display="inline-block">
                     <FormControl>
-                        <FormLabel id="texture-type-group-label">材质类别: </FormLabel>
+                        <FormLabel id="texture-type-group-label">Matertal kategorisi: </FormLabel>
                         <RadioGroup
                             row
                             aria-labelledby="texture-type-group-label"
@@ -327,21 +327,21 @@ function ChangeProfileForm(props: { appData: AppState, setAppData: React.Dispatc
             accessToken: appData.accessToken,
             changeTo: data.changeTo
         }).then(() => {
-            enqueueSnackbar('更改成功', {variant: 'success'});
+            enqueueSnackbar('Başarılı', {variant: 'success'});
             setProfileName(data.changeTo);
         }).catch(e => {
             const response = e.response;
             if (response && response.data) {
                 let errorMessage = response.data.errorMessage;
-                let message = '更改失败: ' + errorMessage;
+                let message = 'Değiştir: ' + errorMessage;
                 if (errorMessage === 'profileName exist') {
-                    message = '更改失败: 角色名已存在';
+                    message = 'Değiştir: Bu isim kullanılmış';
                 } else if (errorMessage === 'profileName duplicate') {
-                    message = '更改失败: 角色名与正版用户冲突';
+                    message = 'Değiştir: Bu isim premium kullanıcılarla çakışıyor';
                 }
                 enqueueSnackbar(message, {variant: 'error'});
             } else {
-                enqueueSnackbar('网络错误:' + e.message, {variant: 'error'});
+                enqueueSnackbar('Ağ hatası:' + e.message, {variant: 'error'});
             }
         }).finally(() => setSubmitting(false));
     };

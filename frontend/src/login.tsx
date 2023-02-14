@@ -58,7 +58,7 @@ function Login(props: { appData: AppState, setAppData: React.Dispatch<React.SetS
                 .then(response => {
                     let data = response.data
                     if (data && data.accessToken) {
-                        enqueueSnackbar("登录成功，accessToken:" + data.accessToken, {variant: 'success'});
+                        enqueueSnackbar("Giriş Başarılı，accessToken:" + data.accessToken, {variant: 'success'});
                         setAppData({
                             ...appData,
                             accessToken: data.accessToken,
@@ -68,15 +68,15 @@ function Login(props: { appData: AppState, setAppData: React.Dispatch<React.SetS
                             uuid: data.selectedProfile?.id
                         });
                     } else {
-                        enqueueSnackbar(data && data.errorMessage ? "登录失败: " + data.errorMessage: "登陆失败", {variant: 'error'});
+                        enqueueSnackbar(data && data.errorMessage ? "Giriş başarısız: " + data.errorMessage: "Giriş başarısız", {variant: 'error'});
                     }
                 })
                 .catch(e => {
                     const response = e.response;
                     if (response && response.status == 403) {
-                        enqueueSnackbar('登录失败: ' + response.data.errorMessage, {variant: 'error'});
+                        enqueueSnackbar('Giriş başarısız: ' + response.data.errorMessage, {variant: 'error'});
                     } else {
-                        enqueueSnackbar('网络错误:' + e.message, {variant: 'error'});
+                        enqueueSnackbar('Ağ hatası:' + e.message, {variant: 'error'});
                     }
                 })
                 .finally(() => setSubmitting(false))
@@ -89,25 +89,25 @@ function Login(props: { appData: AppState, setAppData: React.Dispatch<React.SetS
                 .then(response => {
                     let data = response.data
                     if (data && data.id) {
-                        enqueueSnackbar("注册成功，uuid:" + data.id, {variant: 'success'});
+                        enqueueSnackbar("Kayıt başarılı，uuid:" + data.id, {variant: 'success'});
                         setLogin(true)
                     } else {
-                        enqueueSnackbar(data && data.errorMessage ? "注册失败: " + data.errorMessage: "注册失败", {variant: 'error'});
+                        enqueueSnackbar(data && data.errorMessage ? "Kayıt başarısız: " + data.errorMessage: "Kayıt başarısız", {variant: 'error'});
                     }
                 })
                 .catch(e => {
                     const response = e.response;
                     if (response && response.data) {
                         let errorMessage = response.data.errorMessage;
-                        let message =  "注册失败: " + errorMessage;
+                        let message =  "Kayıt başarısız: " + errorMessage;
                         if (errorMessage === "profileName exist") {
-                            message = "注册失败: 角色名已存在";
+                            message = "Kayıt başarısız: Bu isim kullanılmış";
                         } else if (errorMessage === "profileName duplicate") {
-                            message = "注册失败: 角色名与正版用户冲突";
+                            message = "Kayıt başarısız: Bu isim premium kullanıcılarla çakışıyor";
                         }
                         enqueueSnackbar(message, {variant: 'error'});
                     } else {
-                        enqueueSnackbar('网络错误:' + e.message, {variant: 'error'});
+                        enqueueSnackbar('Ağ hatası:' + e.message, {variant: 'error'});
                     }
                 })
                 .finally(() => setSubmitting(false))

@@ -75,7 +75,7 @@ function App() {
                                 profileName: data.selectedProfile?.name,
                                 uuid: data.selectedProfile?.id
                             });
-                            enqueueSnackbar('刷新token成功，accessToken:' + data.accessToken, {variant: 'success'});
+                            enqueueSnackbar('Refresh Token，accessToken:' + data.accessToken, {variant: 'success'});
                         } else {
                             setTokenValid(false);
                         }
@@ -83,14 +83,14 @@ function App() {
                     .catch(e => {
                         const response = e.response;
                         if (response && response.status == 403) {
-                            enqueueSnackbar('登录已过期', {variant: 'warning'});
+                            enqueueSnackbar('Tekrar giriş yapın.', {variant: 'warning'});
                             setTokenValid(false);
                         } else {
-                            enqueueSnackbar('网络错误:' + e.message, {variant: 'error'});
+                            enqueueSnackbar('Ağ hatası:' + e.message, {variant: 'error'});
                         }
                     });
             } else {
-                enqueueSnackbar('网络错误:' + e.message, {variant: 'error'});
+                enqueueSnackbar('Ağ hatası:' + e.message, {variant: 'error'});
             }
         });
     }
